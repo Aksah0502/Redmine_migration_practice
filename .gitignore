@@ -1,0 +1,126 @@
+
+runtime-data/redmine70-secrets.yml
+
+
+# ==========================================
+# 1. Environment variables and secrets
+# ==========================================
+.env
+.env.*
+!.env.example
+!.env.sample
+
+**/secrets.yml
+**/master.key
+**/credentials/*.key
+**/*secret*
+**/*password*
+
+# ==========================================
+# 2. Database backups and migration data
+# ==========================================
+backups/
+*.dump
+*.sql
+*.sql.gz
+*.backup
+*.bak
+
+# ==========================================
+# 3. Runtime data and attachments
+# ==========================================
+runtime-data/
+attachments/
+files/
+
+# ==========================================
+# 4. Logs and temporary application files
+# ==========================================
+*.log
+log/
+tmp/
+temp/
+*.tmp
+*.pid
+
+# ==========================================
+# 5. Ruby / Rails / Bundler
+# ==========================================
+.bundle/
+vendor/bundle/
+vendor/cache/
+.ruby-version.local
+
+# Keep Gemfile.lock files for reproducible builds.
+# Do not ignore Gemfile.lock.
+
+# ==========================================
+# 6. Python environments and cache
+# ==========================================
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# 7. Docker and container artifacts
+# ==========================================
+*.tar
+*.tar.gz
+docker-data/
+docker-volumes/
+
+# ==========================================
+# 8. IDE and editor files
+# ==========================================
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+
+# ==========================================
+# 9. Windows and operating system files
+# ==========================================
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ==========================================
+# 10. macOS files
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ==========================================
+# 11. Generated assets and coverage
+# ==========================================
+coverage/
+public/assets/
+public/plugin_assets/
+.sass-cache/
+
+# ==========================================
+# 12. Archives and downloaded packages
+# ==========================================
+*.zip
+*.rar
+*.7z
+*.iso
+
+# ==========================================
+# 13. Miscellaneous
+# ==========================================
+*.orig
+*.rej
+*.old
+*.backup

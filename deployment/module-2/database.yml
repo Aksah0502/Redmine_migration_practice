@@ -1,0 +1,9 @@
+production:
+  adapter: postgresql
+  database: <%= ENV.fetch("POSTGRES_DB", "redmine70") %>
+  host: <%= ENV.fetch("DB_HOST", "db") %>
+  port: 5432
+  username: <%= ENV.fetch("POSTGRES_USER", "redmine70") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  encoding: utf8
+  pool: <%= ENV.fetch("DB_POOL", "5") %>

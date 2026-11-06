@@ -1,0 +1,59 @@
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-spec/main/schema/compose-spec.json
+
+services:
+
+  db:
+    image: postgres:15.19-bookworm
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  redmine:
+    build:
+      context: ../..
+      dockerfile: deployment/module-2/Dockerfile
+
+    image: redmine:7.0.3-practice
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    environment:
+      RAILS_ENV: production
+      DB_HOST: db
+      DB_POOL: "5"
+      RAILS_SERVE_STATIC_FILES: "1"
+      RAILS_LOG_TO_STDOUT: "1"
+
+    ports:
+      - "127.0.0.1:3001:3000"
+
+    volumes:
+      - attachments:/usr/src/redmine/files
+      - ../../runtime-data/redmine70-secrets.yml:/usr/src/redmine/config/secrets.yml:ro
+
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+    name: redmine70_pgdata
+
+  attachments:
+    name: redmine70_attachments

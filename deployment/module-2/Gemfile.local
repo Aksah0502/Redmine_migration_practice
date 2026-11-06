@@ -1,0 +1,2 @@
+# Production application server
+gem 'puma'

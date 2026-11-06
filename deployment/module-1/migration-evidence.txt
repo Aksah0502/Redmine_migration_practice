@@ -1,0 +1,4 @@
+Redmine Migration Practice
+Version: 4.2.11
+Purpose: Attachment migration verification
+Status: Sample production data
